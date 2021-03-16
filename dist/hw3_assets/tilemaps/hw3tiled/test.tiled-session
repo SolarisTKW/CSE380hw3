@@ -1,0 +1,36 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "tileset.tsx",
+    "expandedProjectPaths": [
+        ".",
+        "C:/Users/Matthew/IdeaProjects/CSE380/CSE380hw3/dist/hw3_assets/tilemaps/assets"
+    ],
+    "fileStates": {
+        "tileset.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 11
+        }
+    },
+    "map.height": 64,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 64,
+    "openFiles": [
+        "tileset.tsx"
+    ],
+    "project": "test.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "tilemap.tmx",
+        "tileset.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
