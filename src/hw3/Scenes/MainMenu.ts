@@ -1,5 +1,5 @@
 import Vec2 from "../../Wolfie2D/DataTypes/Vec2";
-import { UIElementType } from "../../Wolfie2D/Nodes/UIElements/UIElementTypes";
+import {UIElementType} from "../../Wolfie2D/Nodes/UIElements/UIElementTypes";
 import Layer from "../../Wolfie2D/Scene/Layer";
 import Scene from "../../Wolfie2D/Scene/Scene";
 import Color from "../../Wolfie2D/Utils/Color";
@@ -10,6 +10,7 @@ export default class MainMenu extends Scene {
     // Layers, for multiple main menu screens
     private mainMenu: Layer;
     private about: Layer;
+    private controls: Layer;
 
     loadScene(){}
 
@@ -42,9 +43,9 @@ export default class MainMenu extends Scene {
         const aboutHeader = <Label>this.add.uiElement(UIElementType.LABEL, "about", {position: new Vec2(center.x, center.y - 250), text: "About"});
         aboutHeader.textColor = Color.WHITE;
 
-        // HOMEWORK 3 - TODO
+        // HOMEWORK 3 - TODO DONE
         // Give yourself credit for your work on this game!
-        const text1 = "This game was created by <YOUR NAME HERE>, Joe Weaver, and Richard McKenna";
+        const text1 = "This game was created by Matthew Ng, Joe Weaver, and Richard McKenna";
         const text2 = "using the Wolfie2D game engine, a TypeScript game engine created by";
         const text3 = "Joe Weaver and Richard McKenna.";
 
@@ -63,12 +64,7 @@ export default class MainMenu extends Scene {
         aboutBack.backgroundColor = Color.TRANSPARENT;
         aboutBack.onClickEventId = "menu";
 
-        // Subscribe to the button events
-        this.receiver.subscribe("play");
-        this.receiver.subscribe("about");
-        this.receiver.subscribe("menu");
-
-        // HOMEWORK 3 - TODO
+        // HOMEWORK 3 - TODO DONE
         /*
             Add a controls screen here.
             Use the About screen as inspiration for how to do so.
@@ -84,6 +80,46 @@ export default class MainMenu extends Scene {
 
             Additionally, on the main menu, you should be able to press a button to reach the controls screen.
         */
+
+        //Button
+        const controls = this.add.uiElement(UIElementType.BUTTON, "mainMenu", {position: new Vec2(center.x, center.y), text: "Controls"});
+        controls.size.set(200, 50);
+        controls.borderWidth = 2;
+        controls.borderColor = Color.WHITE;
+        controls.backgroundColor = Color.TRANSPARENT;
+        controls.onClickEventId = "controls";
+
+        //Controls Screen
+        this.controls = this.addUILayer("controls");
+        this.controls.setHidden(true);
+
+        const controlsHeader = <Label>this.add.uiElement(UIElementType.LABEL, "controls", {position: new Vec2(center.x, center.y - 250), text: "Controls"});
+        controlsHeader.textColor = Color.WHITE;
+
+        const line4 = <Label>this.add.uiElement(UIElementType.LABEL, "controls", {position: new Vec2(center.x, center.y - 100), text: "WASD to move"});
+        const line5 = <Label>this.add.uiElement(UIElementType.LABEL, "controls", {position: new Vec2(center.x, center.y - 50), text: "Q to drop an item"});
+        const line6 = <Label>this.add.uiElement(UIElementType.LABEL, "controls", {position: new Vec2(center.x, center.y), text: "E to pick up an item"});
+        const line7 = <Label>this.add.uiElement(UIElementType.LABEL, "controls", {position: new Vec2(center.x, center.y + 50), text: "Click to use current item"});
+        const line8 = <Label>this.add.uiElement(UIElementType.LABEL, "controls", {position: new Vec2(center.x, center.y + 100), text: "1&2 to change items"});
+
+        line4.textColor = Color.WHITE;
+        line5.textColor = Color.WHITE;
+        line6.textColor = Color.WHITE;
+        line7.textColor = Color.WHITE;
+        line8.textColor = Color.WHITE;
+
+        const controlsBack = this.add.uiElement(UIElementType.BUTTON, "controls", {position: new Vec2(center.x, center.y + 250), text: "Back"});
+        controlsBack.size.set(200, 50);
+        controlsBack.borderWidth = 2;
+        controlsBack.borderColor = Color.WHITE;
+        controlsBack.backgroundColor = Color.TRANSPARENT;
+        controlsBack.onClickEventId = "menu";
+
+        // Subscribe to the button events
+        this.receiver.subscribe("play");
+        this.receiver.subscribe("about");
+        this.receiver.subscribe("controls");
+        this.receiver.subscribe("menu");
     }
 
     updateScene(){
@@ -104,6 +140,12 @@ export default class MainMenu extends Scene {
             if(event.type === "menu"){
                 this.mainMenu.setHidden(false);
                 this.about.setHidden(true);
+                this.controls.setHidden(true);
+            }
+
+            if(event.type === "controls"){
+                this.controls.setHidden(false);
+                this.mainMenu.setHidden(true);
             }
         }
     }
