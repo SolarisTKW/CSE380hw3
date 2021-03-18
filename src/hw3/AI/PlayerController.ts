@@ -114,6 +114,7 @@ export default class PlayerController implements BattlerAI {
             }
         }
 
+        console.log(this.owner.position);
     }
 
     damage(damage: number): void {

@@ -22,11 +22,11 @@
             }
         },
         "tilemap.tmx": {
-            "scale": 0.3302734375,
-            "selectedLayer": 0,
+            "scale": 0.75,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 637.3506800709639,
-                "y": 501.0999408633944
+                "x": 446,
+                "y": 528
             }
         },
         "tilemap.tmx#tileset": {

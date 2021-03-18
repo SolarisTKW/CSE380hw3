@@ -51,7 +51,7 @@ export default class hw3_scene extends Scene {
         this.load.spritesheet("enemy", "hw3_assets/spritesheets/enemy.json");
 
         // Load the tilemap
-        // HOMEWORK 3 - TODO
+        // HOMEWORK 3 - TODO DONE
         // Change this file to be your own tilemap
         this.load.tilemap("level", "hw3_assets/tilemaps/tilemap.json");
 
@@ -77,7 +77,7 @@ export default class hw3_scene extends Scene {
         let tilemapLayers = this.add.tilemap("level");
 
         // Get the wall layer
-        // HOMEWORK 3 - TODO
+        // HOMEWORK 3 - TODO DONE
         /*
             Modify this line if needed.
             
