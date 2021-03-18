@@ -113,6 +113,7 @@ export default class PlayerController implements BattlerAI {
                 this.items.push(item);
             }
         }
+
     }
 
     damage(damage: number): void {
