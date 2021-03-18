@@ -103,6 +103,31 @@
             "type": "weapon",
             "weaponType": "pistol",
             "position": [887, 38]
+        },
+        {
+            "type": "weapon",
+            "weaponType": "lasergun",
+            "position": [744, 631]
+        },
+        {
+            "type": "weapon",
+            "weaponType": "lasergun",
+            "position": [136, 760]
+        },
+        {
+            "type": "weapon",
+            "weaponType": "lasergun",
+            "position": [424, 312]
+        },
+        {
+            "type": "weapon",
+            "weaponType": "lasergun",
+            "position": [616, 247]
+        },
+        {
+            "type": "weapon",
+            "weaponType": "lasergun",
+            "position": [841, 39]
         }
     ]
 }

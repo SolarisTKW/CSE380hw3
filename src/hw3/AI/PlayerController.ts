@@ -58,6 +58,8 @@ export default class PlayerController implements BattlerAI {
             this.owner.animation.playIfNotAlready("IDLE", true);
         }
 
+        console.log(this.owner.position);
+
         // Get the unit vector in the look direction
         this.lookDirection = this.owner.position.dirTo(Input.getGlobalMousePosition());
 
@@ -114,7 +116,7 @@ export default class PlayerController implements BattlerAI {
             }
         }
 
-        console.log(this.owner.position);
+        // console.log(this.owner.position);
     }
 
     damage(damage: number): void {
