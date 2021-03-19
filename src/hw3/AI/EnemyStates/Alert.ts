@@ -3,7 +3,7 @@ import GameEvent from "../../../Wolfie2D/Events/GameEvent";
 import GameNode from "../../../Wolfie2D/Nodes/GameNode";
 import NavigationPath from "../../../Wolfie2D/Pathfinding/NavigationPath";
 import Timer from "../../../Wolfie2D/Timing/Timer";
-import { hw3_Names } from "../../hw3_constants";
+import {hw3_Events, hw3_Names} from "../../hw3_constants";
 import EnemyAI, { EnemyStates } from "../EnemyAI";
 import EnemyState from "./EnemyState";
 
@@ -24,10 +24,15 @@ export default class Alert extends EnemyState {
     // Receives options.target
     onEnter(options: Record<string, any>): void {
         this.alertTimer.start();
+        this.owner.pathfinding = true;
+        this.path = this.owner.getScene().getNavigationManager().getPath(hw3_Names.NAVMESH, this.owner.position, options.target);
     }
 
     handleInput(event: GameEvent): void {
-
+        if(event.type === hw3_Events.SHOT_FIRED){
+            // Shot was fired. Change path to respect that
+            this.path = this.owner.getScene().getNavigationManager().getPath(hw3_Names.NAVMESH, this.owner.position, event.data.get("position"));
+        }
     }
 
     // HOMEWORK 3 - TODO
@@ -42,6 +47,11 @@ export default class Alert extends EnemyState {
             // The timer is up, return to the default state
             this.finished(EnemyStates.DEFAULT);
             return;
+        }
+        else
+        {
+            this.owner.moveOnPath(this.parent.speed * deltaT, this.path);
+            this.owner.rotation = Vec2.UP.angleToCCW(this.path.getMoveDirection(this.owner));
         }
 
         if(this.parent.getPlayerPosition() !== null){
