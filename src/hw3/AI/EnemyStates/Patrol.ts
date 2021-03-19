@@ -27,7 +27,21 @@ export default class Patrol extends EnemyState {
         this.routeIndex = 0;
     }
 
-    onEnter(options: Record<string, any>): void {}
+    onEnter(options: Record<string, any>): void {
+        this.owner.pathfinding = true;
+        // if enemy is away from entire patrol path, find the closest node in patrolRoute
+        // once found, make a new route to closest route
+        let closestNode = this.patrolRoute[0];
+        for (let i = 1; i < this.patrolRoute.length; i++){
+            const node = this.patrolRoute[i];
+            if (this.owner.position.distanceSqTo(node) < this.owner.position.distanceSqTo(closestNode)) {
+                closestNode = node;
+                this.routeIndex = i;
+            }
+        }
+
+        this.currentPath = this.getNextPath();
+    }
 
     handleInput(event: GameEvent): void {
         if(event.type === hw3_Events.SHOT_FIRED){
@@ -53,6 +67,14 @@ export default class Patrol extends EnemyState {
      * For inspiration, check out the Guard state, or look at the NavigationPath class or the GameNode class
      */
     update(deltaT: number): void {
+        // if the path aka edge is done
+        if(this.currentPath.isDone()){
+            this.currentPath = this.getNextPath();
+        }
+        this.owner.moveOnPath(this.parent.speed * deltaT, this.currentPath);
+        this.owner.rotation = Vec2.UP.angleToCCW(this.currentPath.getMoveDirection(this.owner));
+
+
         // If the enemy sees the player, start attacking
         if(this.parent.getPlayerPosition() !== null){
             this.finished(EnemyStates.ATTACKING);

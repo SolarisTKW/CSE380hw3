@@ -59,7 +59,7 @@ export default class PlayerController implements BattlerAI {
         }
 
         // TODO - remove
-        console.log(this.owner.position);
+        // console.log(this.owner.position);
 
         // Get the unit vector in the look direction
         this.lookDirection = this.owner.position.dirTo(Input.getGlobalMousePosition());
