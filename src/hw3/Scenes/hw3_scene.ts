@@ -160,7 +160,7 @@ export default class hw3_scene extends Scene {
         }
     }
 
-    // HOMEWORK 3 - TODO
+    // HOMEWORK 3 - TODO DONE
     /**
      * This function spawns in all of the items in "items.json"
      * 
@@ -211,7 +211,7 @@ export default class hw3_scene extends Scene {
         this.items.push(healthpack);
     }
 
-    // HOMEWORK 3 - TODO
+    // HOMEWORK 3 - TODO DONE
     /**
      * You'll want to have a new weapon type available in your program - a laser gun.
      * Carefully look through the code for how the other weapon types (knife and pistol)
@@ -264,7 +264,7 @@ export default class hw3_scene extends Scene {
         this.player.animation.play("IDLE");
     }
 
-    // HOMEWORK 3 - TODO
+    // HOMEWORK 3 - TODO DONE
     /**
      * This function creates the navmesh for the game world.
      * 
@@ -311,7 +311,7 @@ export default class hw3_scene extends Scene {
         this.navManager.addNavigableEntity(hw3_Names.NAVMESH, navmesh);
     }
 
-    // HOMEWORK 3 - TODO
+    // HOMEWORK 3 - TODO DONE
     /**
      * This function creates all enemies from the enemy.json file.
      * You shouldn't have to modify any code here, but you should edit enemy.json to
